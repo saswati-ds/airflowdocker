@@ -1,0 +1,10 @@
+1.create a new airflow folder
+2.create configs, dags ,images , logs,plugins folders
+3.download doccano-compose.yml file
+4.remove un-nessesay codes from yml file
+5. create a new docker-file with all the requirements mentioned
+6.replace 'image: ${AIRFLOW_IMAGE_NAME:-apache/airflow:2.6.2}' with 'build: .' in the yml file (version of airflow can be changed).
+7. run 'docker-compose up airflow-init'
+8. run 'docker-compose up -d' to run the container
+9. 'docker-compose build'- for rebuilding the image
+

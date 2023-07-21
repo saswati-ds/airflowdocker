@@ -1,0 +1,100 @@
+[2023-06-30T05:38:31.236+0000] {taskinstance.py:1093} INFO - Dependencies not met for <TaskInstance: order-letter_NER.read_order_from_mail manual__2023-06-30T05:33:07.927789+00:00 [up_for_retry]>, dependency 'Not In Retry Period' FAILED: Task is not ready for retry yet but will be retried automatically. Current date is 2023-06-30T05:38:31.236827+00:00 and task will be retried at 2023-06-30T05:40:24.159229+00:00.
+[2023-06-30T05:38:31.252+0000] {local_task_job_runner.py:154} INFO - Task is not able to be run
+[2023-06-30T05:40:30.469+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: order-letter_NER.read_order_from_mail manual__2023-06-30T05:33:07.927789+00:00 [queued]>
+[2023-06-30T05:40:30.489+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: order-letter_NER.read_order_from_mail manual__2023-06-30T05:33:07.927789+00:00 [queued]>
+[2023-06-30T05:40:30.490+0000] {taskinstance.py:1308} INFO - Starting attempt 3 of 6
+[2023-06-30T05:40:30.517+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): read_order_from_mail> on 2023-06-30 05:33:07.927789+00:00
+[2023-06-30T05:40:30.530+0000] {standard_task_runner.py:57} INFO - Started process 2029 to run task
+[2023-06-30T05:40:30.541+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'order-letter_NER', 'read_order_from_mail', 'manual__2023-06-30T05:33:07.927789+00:00', '--job-id', '55', '--raw', '--subdir', 'DAGS_FOLDER/order-letter-extraction.py', '--cfg-path', '/tmp/tmp9tmsbh7e']
+[2023-06-30T05:40:30.546+0000] {standard_task_runner.py:85} INFO - Job 55: Subtask read_order_from_mail
+[2023-06-30T05:40:30.619+0000] {task_command.py:410} INFO - Running <TaskInstance: order-letter_NER.read_order_from_mail manual__2023-06-30T05:33:07.927789+00:00 [running]> on host f7b244b51c6e
+[2023-06-30T05:40:30.742+0000] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Abin Jilson' AIRFLOW_CTX_DAG_ID='order-letter_NER' AIRFLOW_CTX_TASK_ID='read_order_from_mail' AIRFLOW_CTX_EXECUTION_DATE='2023-06-30T05:33:07.927789+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-06-30T05:33:07.927789+00:00'
+[2023-06-30T05:44:02.838+0000] {logging_mixin.py:149} INFO - Dear Sir,
+
+There is an urgent need for some things/items in our office. The details of
+which are as follows. 11 pieces of AMSTERDAM Lamp , 6 TOKYO Guest Chair,
+blue , 13 ROME Guest Chair, green, 2 Conference Bundle 1-6 and 2 ANTWERP
+Conference Table. You are requested to provide all the above items as soon
+as possible to avoid interruption in our work.
+
+Sincerely Yours,
+
+Yahad
+[2023-06-30T05:44:05.099+0000] {python.py:183} INFO - Done. Returned value was: Dear Sir,
+
+There is an urgent need for some things/items in our office. The details of
+which are as follows. 11 pieces of AMSTERDAM Lamp , 6 TOKYO Guest Chair,
+blue , 13 ROME Guest Chair, green, 2 Conference Bundle 1-6 and 2 ANTWERP
+Conference Table. You are requested to provide all the above items as soon
+as possible to avoid interruption in our work.
+
+Sincerely Yours,
+
+Yahad
+
+[2023-06-30T05:44:33.308+0000] {local_task_job_runner.py:291} WARNING - State of this instance has been externally set to queued. Terminating instance.
+[2023-06-30T05:44:34.808+0000] {process_utils.py:131} INFO - Sending Signals.SIGTERM to group 2029. PIDs of all processes in the group: [2029]
+[2023-06-30T05:44:34.852+0000] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 2029
+[2023-06-30T05:44:35.825+0000] {taskinstance.py:1517} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-06-30T05:44:37.849+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 73, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 2354, in xcom_push
+    XCom.set(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 73, in wrapper
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/xcom.py", line 212, in set
+    dag_run_id = session.query(DagRun.id).filter_by(dag_id=dag_id, run_id=run_id).scalar()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 2893, in scalar
+    ret = self.one()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 2870, in one
+    return self._iter().one()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 2916, in _iter
+    result = self.session.execute(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1716, in execute
+    conn = self._connection_for_bind(bind)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1555, in _connection_for_bind
+    return self._transaction._connection_for_bind(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 750, in _connection_for_bind
+    conn = bind.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3320, in connect
+    return self._connection_cls(self, close_with_result=close_with_result)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 96, in __init__
+    else engine.raw_connection()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3399, in raw_connection
+    return self._wrap_pool_connect(self.pool.connect, _connection)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3366, in _wrap_pool_connect
+    return fn()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 327, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 894, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 493, in checkout
+    rec = pool._do_get()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/impl.py", line 256, in _do_get
+    return self._create_connection()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 273, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 388, in __init__
+    self.__connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 691, in __connect
+    pool.logger.debug("Error on connect(): %s", e)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/pool/base.py", line 686, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/create.py", line 574, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 598, in connect
+    return self.dbapi.connect(*cargs, **cparams)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1519, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2023-06-30T05:44:37.977+0000] {taskinstance.py:1345} INFO - Marking task as UP_FOR_RETRY. dag_id=order-letter_NER, task_id=read_order_from_mail, execution_date=20230630T053307, start_date=20230630T054030, end_date=20230630T054437
+[2023-06-30T05:44:38.041+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 55 for task read_order_from_mail (Task received SIGTERM signal; 2029)
+[2023-06-30T05:44:38.118+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=2029, status='terminated', exitcode=1, started='05:40:29') (2029) terminated with exit code 1

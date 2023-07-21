@@ -1,0 +1,55 @@
+[2023-06-29T11:39:10.876+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: order-letter_NER.extract_product_and_quantity manual__2023-06-29T11:09:35.669273+00:00 [queued]>
+[2023-06-29T11:39:10.891+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: order-letter_NER.extract_product_and_quantity manual__2023-06-29T11:09:35.669273+00:00 [queued]>
+[2023-06-29T11:39:10.892+0000] {taskinstance.py:1308} INFO - Starting attempt 1 of 6
+[2023-06-29T11:39:10.922+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): extract_product_and_quantity> on 2023-06-29 11:09:35.669273+00:00
+[2023-06-29T11:39:10.932+0000] {standard_task_runner.py:57} INFO - Started process 2073 to run task
+[2023-06-29T11:39:10.937+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'order-letter_NER', 'extract_product_and_quantity', 'manual__2023-06-29T11:09:35.669273+00:00', '--job-id', '27', '--raw', '--subdir', 'DAGS_FOLDER/order-letter-extraction.py', '--cfg-path', '/tmp/tmprnpv8di1']
+[2023-06-29T11:39:10.940+0000] {standard_task_runner.py:85} INFO - Job 27: Subtask extract_product_and_quantity
+[2023-06-29T11:39:11.027+0000] {task_command.py:410} INFO - Running <TaskInstance: order-letter_NER.extract_product_and_quantity manual__2023-06-29T11:09:35.669273+00:00 [running]> on host 2114e0d6603f
+[2023-06-29T11:39:11.230+0000] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Abin Jilson' AIRFLOW_CTX_DAG_ID='order-letter_NER' AIRFLOW_CTX_TASK_ID='extract_product_and_quantity' AIRFLOW_CTX_EXECUTION_DATE='2023-06-29T11:09:35.669273+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-06-29T11:09:35.669273+00:00'
+[2023-06-29T11:39:11.325+0000] {logging_mixin.py:149} WARNING - /home/***/.local/lib/python3.8/site-packages/spacy/util.py:877 UserWarning: [W095] Model 'en_pipeline' (0.0.0) was trained with spaCy v3.5 and may not be 100% compatible with the current version (3.5.0). If you see errors or degraded performance, download a newer compatible model or retrain your custom model with the current spaCy version. For more details and available updates, run: python -m spacy validate
+[2023-06-29T11:46:57.667+0000] {local_task_job_runner.py:291} WARNING - State of this instance has been externally set to queued. Terminating instance.
+[2023-06-29T11:46:57.854+0000] {process_utils.py:131} INFO - Sending Signals.SIGTERM to group 2073. PIDs of all processes in the group: [2073]
+[2023-06-29T11:46:57.865+0000] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 2073
+[2023-06-29T11:47:15.730+0000] {taskinstance.py:1517} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-06-29T11:47:15.845+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/order-letter-extraction.py", line 75, in extract_product_and_quantity
+    nlp_ner = spacy.load("dags/furniture-spacy-best")
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy/__init__.py", line 54, in load
+    return util.load_model(
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy/util.py", line 434, in load_model
+    return load_model_from_path(Path(name), **kwargs)  # type: ignore[arg-type]
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy/util.py", line 514, in load_model_from_path
+    return nlp.from_disk(model_path, exclude=exclude, overrides=overrides)
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy/language.py", line 2125, in from_disk
+    util.from_disk(path, deserializers, exclude)  # type: ignore[arg-type]
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy/util.py", line 1352, in from_disk
+    reader(path / key)
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy/language.py", line 2119, in <lambda>
+    deserializers[name] = lambda p, proc=proc: proc.from_disk(  # type: ignore[misc]
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy_transformers/pipeline_component.py", line 416, in from_disk
+    util.from_disk(path, deserialize, exclude)  # type: ignore
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy/util.py", line 1352, in from_disk
+    reader(path / key)
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy_transformers/pipeline_component.py", line 390, in load_model
+    self.model.from_bytes(mfile.read())
+  File "/home/airflow/.local/lib/python3.8/site-packages/thinc/model.py", line 617, in from_bytes
+    msg = srsly.msgpack_loads(bytes_data)
+  File "/home/airflow/.local/lib/python3.8/site-packages/srsly/_msgpack_api.py", line 27, in msgpack_loads
+    msg = msgpack.loads(data, raw=False, use_list=use_list)
+  File "/home/airflow/.local/lib/python3.8/site-packages/srsly/msgpack/__init__.py", line 79, in unpackb
+    return _unpackb(packed, **kwargs)
+  File "srsly/msgpack/_unpacker.pyx", line 191, in srsly.msgpack._unpacker.unpackb
+  File "/home/airflow/.local/lib/python3.8/site-packages/spacy_transformers/data_classes.py", line 234, in deserialize_transformer_data
+    @srsly.msgpack_decoders("transformerdata")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1519, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2023-06-29T11:47:17.556+0000] {taskinstance.py:1345} INFO - Marking task as UP_FOR_RETRY. dag_id=order-letter_NER, task_id=extract_product_and_quantity, execution_date=20230629T110935, start_date=20230629T113910, end_date=20230629T114717
+[2023-06-29T11:47:17.743+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 27 for task extract_product_and_quantity (Task received SIGTERM signal; 2073)
+[2023-06-29T11:47:18.068+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=2073, status='terminated', exitcode=1, started='11:39:10') (2073) terminated with exit code 1

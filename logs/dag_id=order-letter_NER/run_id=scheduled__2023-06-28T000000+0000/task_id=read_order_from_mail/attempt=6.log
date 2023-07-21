@@ -1,0 +1,31 @@
+[2023-06-29T12:47:34.421+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: order-letter_NER.read_order_from_mail scheduled__2023-06-28T00:00:00+00:00 [queued]>
+[2023-06-29T12:47:34.447+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: order-letter_NER.read_order_from_mail scheduled__2023-06-28T00:00:00+00:00 [queued]>
+[2023-06-29T12:47:34.448+0000] {taskinstance.py:1308} INFO - Starting attempt 6 of 6
+[2023-06-29T12:47:34.818+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): read_order_from_mail> on 2023-06-28 00:00:00+00:00
+[2023-06-29T12:47:34.850+0000] {standard_task_runner.py:57} INFO - Started process 4108 to run task
+[2023-06-29T12:47:34.857+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'order-letter_NER', 'read_order_from_mail', 'scheduled__2023-06-28T00:00:00+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/order-letter-extraction.py', '--cfg-path', '/tmp/tmpiiibepui']
+[2023-06-29T12:47:34.874+0000] {standard_task_runner.py:85} INFO - Job 35: Subtask read_order_from_mail
+[2023-06-29T12:47:35.080+0000] {task_command.py:410} INFO - Running <TaskInstance: order-letter_NER.read_order_from_mail scheduled__2023-06-28T00:00:00+00:00 [running]> on host 2114e0d6603f
+[2023-06-29T12:47:35.511+0000] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Abin Jilson' AIRFLOW_CTX_DAG_ID='order-letter_NER' AIRFLOW_CTX_TASK_ID='read_order_from_mail' AIRFLOW_CTX_EXECUTION_DATE='2023-06-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-06-28T00:00:00+00:00'
+[2023-06-29T12:49:04.862+0000] {logging_mixin.py:149} INFO - An error occurred: [Errno -3] Temporary failure in name resolution
+[2023-06-29T12:51:07.654+0000] {logging_mixin.py:149} INFO - An error occurred: [Errno -3] Temporary failure in name resolution
+[2023-06-29T12:58:14.630+0000] {local_task_job_runner.py:115} ERROR - Received SIGTERM. Terminating subprocesses
+[2023-06-29T12:58:14.646+0000] {process_utils.py:131} INFO - Sending Signals.SIGTERM to group 4108. PIDs of all processes in the group: [4108]
+[2023-06-29T12:58:14.647+0000] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 4108
+[2023-06-29T12:58:14.648+0000] {taskinstance.py:1517} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-06-29T12:58:14.682+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/order-letter-extraction.py", line 67, in read_order_from_mail
+    time.sleep(10)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 1519, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2023-06-29T12:58:14.838+0000] {taskinstance.py:1345} INFO - Marking task as FAILED. dag_id=order-letter_NER, task_id=read_order_from_mail, execution_date=20230628T000000, start_date=20230629T124734, end_date=20230629T125814
+[2023-06-29T12:58:15.149+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 35 for task read_order_from_mail (Task received SIGTERM signal; 4108)
+[2023-06-29T12:58:15.207+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=4108, status='terminated', exitcode=1, started='12:47:34') (4108) terminated with exit code 1
+[2023-06-29T12:58:15.211+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 143
+[2023-06-29T12:58:15.295+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

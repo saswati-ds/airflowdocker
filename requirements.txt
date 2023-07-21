@@ -1,0 +1,4 @@
+requests
+spacy==3.5
+spacy-transformers
+doccano-client==1.0.3

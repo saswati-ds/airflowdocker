@@ -1,0 +1,33 @@
+[2023-06-30T15:03:22.072+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: order-letter_NER.post_to_dynamics_task manual__2023-06-30T14:53:57.649606+00:00 [queued]>
+[2023-06-30T15:03:22.085+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: order-letter_NER.post_to_dynamics_task manual__2023-06-30T14:53:57.649606+00:00 [queued]>
+[2023-06-30T15:03:22.086+0000] {taskinstance.py:1308} INFO - Starting attempt 4 of 6
+[2023-06-30T15:03:22.111+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): post_to_dynamics_task> on 2023-06-30 14:53:57.649606+00:00
+[2023-06-30T15:03:22.118+0000] {standard_task_runner.py:57} INFO - Started process 22464 to run task
+[2023-06-30T15:03:22.121+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'order-letter_NER', 'post_to_dynamics_task', 'manual__2023-06-30T14:53:57.649606+00:00', '--job-id', '144', '--raw', '--subdir', 'DAGS_FOLDER/order-letter-extraction.py', '--cfg-path', '/tmp/tmp05mpcp1u']
+[2023-06-30T15:03:22.124+0000] {standard_task_runner.py:85} INFO - Job 144: Subtask post_to_dynamics_task
+[2023-06-30T15:03:22.185+0000] {task_command.py:410} INFO - Running <TaskInstance: order-letter_NER.post_to_dynamics_task manual__2023-06-30T14:53:57.649606+00:00 [running]> on host f7b244b51c6e
+[2023-06-30T15:03:22.290+0000] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Abin Jilson' AIRFLOW_CTX_DAG_ID='order-letter_NER' AIRFLOW_CTX_TASK_ID='post_to_dynamics_task' AIRFLOW_CTX_EXECUTION_DATE='2023-06-30T14:53:57.649606+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-06-30T14:53:57.649606+00:00'
+[2023-06-30T15:03:22.293+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/order-letter-extraction.py", line 168, in dynamics_upload_main
+    task_instance = TaskInstance(dag_id, task_id, execution_date)
+  File "<string>", line 4, in __init__
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/state.py", line 482, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 70, in __exit__
+    compat.raise_(
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+    raise exception
+  File "/home/airflow/.local/lib/python3.8/site-packages/sqlalchemy/orm/state.py", line 479, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 469, in __init__
+    self.dag_id = task.dag_id
+AttributeError: 'str' object has no attribute 'dag_id'
+[2023-06-30T15:03:22.304+0000] {taskinstance.py:1345} INFO - Marking task as UP_FOR_RETRY. dag_id=order-letter_NER, task_id=post_to_dynamics_task, execution_date=20230630T145357, start_date=20230630T150322, end_date=20230630T150322
+[2023-06-30T15:03:22.326+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 144 for task post_to_dynamics_task ('str' object has no attribute 'dag_id'; 22464)
+[2023-06-30T15:03:22.374+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-06-30T15:03:22.399+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

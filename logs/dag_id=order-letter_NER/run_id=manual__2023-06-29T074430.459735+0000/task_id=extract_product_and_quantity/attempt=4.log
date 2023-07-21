@@ -1,0 +1,20 @@
+[2023-06-29T07:52:56.927+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: order-letter_NER.extract_product_and_quantity manual__2023-06-29T07:44:30.459735+00:00 [queued]>
+[2023-06-29T07:52:56.952+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: order-letter_NER.extract_product_and_quantity manual__2023-06-29T07:44:30.459735+00:00 [queued]>
+[2023-06-29T07:52:56.953+0000] {taskinstance.py:1308} INFO - Starting attempt 4 of 6
+[2023-06-29T07:52:56.990+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): extract_product_and_quantity> on 2023-06-29 07:44:30.459735+00:00
+[2023-06-29T07:52:57.001+0000] {standard_task_runner.py:57} INFO - Started process 2496 to run task
+[2023-06-29T07:52:57.009+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'order-letter_NER', 'extract_product_and_quantity', 'manual__2023-06-29T07:44:30.459735+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/order-letter-extraction.py', '--cfg-path', '/tmp/tmp2nvt1af5']
+[2023-06-29T07:52:57.015+0000] {standard_task_runner.py:85} INFO - Job 14: Subtask extract_product_and_quantity
+[2023-06-29T07:52:57.124+0000] {task_command.py:410} INFO - Running <TaskInstance: order-letter_NER.extract_product_and_quantity manual__2023-06-29T07:44:30.459735+00:00 [running]> on host 0eb747d9e0f2
+[2023-06-29T07:52:57.280+0000] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Abin Jilson' AIRFLOW_CTX_DAG_ID='order-letter_NER' AIRFLOW_CTX_TASK_ID='extract_product_and_quantity' AIRFLOW_CTX_EXECUTION_DATE='2023-06-29T07:44:30.459735+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-06-29T07:44:30.459735+00:00'
+[2023-06-29T07:52:57.284+0000] {taskinstance.py:1824} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 181, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 198, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+TypeError: extract_product_and_quantity() missing 1 required positional argument: 'content'
+[2023-06-29T07:52:57.303+0000] {taskinstance.py:1345} INFO - Marking task as UP_FOR_RETRY. dag_id=order-letter_NER, task_id=extract_product_and_quantity, execution_date=20230629T074430, start_date=20230629T075256, end_date=20230629T075257
+[2023-06-29T07:52:57.345+0000] {standard_task_runner.py:104} ERROR - Failed to execute job 14 for task extract_product_and_quantity (extract_product_and_quantity() missing 1 required positional argument: 'content'; 2496)
+[2023-06-29T07:52:57.420+0000] {local_task_job_runner.py:225} INFO - Task exited with return code 1
+[2023-06-29T07:52:57.451+0000] {taskinstance.py:2653} INFO - 0 downstream tasks scheduled from follow-on schedule check

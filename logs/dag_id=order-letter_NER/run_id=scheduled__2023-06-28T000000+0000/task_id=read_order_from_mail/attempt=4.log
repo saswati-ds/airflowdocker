@@ -1,0 +1,20 @@
+[2023-06-29T11:15:06.996+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: order-letter_NER.read_order_from_mail scheduled__2023-06-28T00:00:00+00:00 [queued]>
+[2023-06-29T11:15:07.011+0000] {taskinstance.py:1103} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: order-letter_NER.read_order_from_mail scheduled__2023-06-28T00:00:00+00:00 [queued]>
+[2023-06-29T11:15:07.012+0000] {taskinstance.py:1308} INFO - Starting attempt 4 of 6
+[2023-06-29T11:15:07.050+0000] {taskinstance.py:1327} INFO - Executing <Task(PythonOperator): read_order_from_mail> on 2023-06-28 00:00:00+00:00
+[2023-06-29T11:15:07.059+0000] {standard_task_runner.py:57} INFO - Started process 1148 to run task
+[2023-06-29T11:15:07.066+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'order-letter_NER', 'read_order_from_mail', 'scheduled__2023-06-28T00:00:00+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/order-letter-extraction.py', '--cfg-path', '/tmp/tmptgmuutru']
+[2023-06-29T11:15:07.071+0000] {standard_task_runner.py:85} INFO - Job 25: Subtask read_order_from_mail
+[2023-06-29T11:15:07.152+0000] {task_command.py:410} INFO - Running <TaskInstance: order-letter_NER.read_order_from_mail scheduled__2023-06-28T00:00:00+00:00 [running]> on host 2114e0d6603f
+[2023-06-29T11:15:07.321+0000] {taskinstance.py:1545} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Abin Jilson' AIRFLOW_CTX_DAG_ID='order-letter_NER' AIRFLOW_CTX_TASK_ID='read_order_from_mail' AIRFLOW_CTX_EXECUTION_DATE='2023-06-28T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='4' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2023-06-28T00:00:00+00:00'
+[2023-06-29T11:41:52.061+0000] {logging_mixin.py:149} INFO - An error occurred: [Errno -3] Temporary failure in name resolution
+[2023-06-29T11:46:33.967+0000] {logging_mixin.py:149} INFO - An error occurred: [Errno -3] Temporary failure in name resolution
+[2023-06-29T11:46:57.808+0000] {local_task_job_runner.py:291} WARNING - State of this instance has been externally set to queued. Terminating instance.
+[2023-06-29T11:46:57.860+0000] {process_utils.py:131} INFO - Sending Signals.SIGTERM to group 1148. PIDs of all processes in the group: [1148]
+[2023-06-29T11:46:57.862+0000] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 1148
+[2023-06-29T11:47:05.143+0000] {taskinstance.py:1517} ERROR - Received SIGTERM. Terminating subprocesses.
+[2023-06-29T11:47:08.938+0000] {logging_mixin.py:149} INFO - An error occurred: Task received SIGTERM signal
+[2023-06-29T11:47:57.895+0000] {process_utils.py:149} WARNING - process psutil.Process(pid=1148, name='airflow task ru', status='sleeping', started='11:15:06') did not respond to SIGTERM. Trying SIGKILL
+[2023-06-29T11:47:57.897+0000] {process_utils.py:86} INFO - Sending the signal Signals.SIGKILL to group 1148
+[2023-06-29T11:47:57.912+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=1148, name='airflow task ru', status='terminated', exitcode=<Negsignal.SIGKILL: -9>, started='11:15:06') (1148) terminated with exit code Negsignal.SIGKILL
+[2023-06-29T11:47:57.914+0000] {standard_task_runner.py:172} ERROR - Job 25 was killed before it finished (likely due to running out of memory)
